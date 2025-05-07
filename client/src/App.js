@@ -1,21 +1,27 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import logo from './logo.svg';
 import './App.css';
 
 function App() {
-  const [data, setData] = React.useState(null);
+  const [question, setQuestion] = useState(null);
 
-  React.useEffect(() => {
-    fetch("/api")
-      .then((res) => res.json())
-      .then((data) => setData(data.message));
+  useEffect(() => {
+    const fetchData = async () => {
+      const res = await fetch("/getQuestion");
+      const data = await res.json();
+      console.log(data)
+      setQuestion(data);
+    };
+    fetchData();
   }, []);
+
+
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <p>{!data ? "Loading..." : data}</p>
+        <p>{!question ? "Loading question..." : question.country}</p>
       </header>
     </div>
   );
