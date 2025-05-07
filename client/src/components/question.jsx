@@ -1,6 +1,6 @@
 import React, { useState, useRef } from "react";
 
-export default function Question({ question, nextQuestion }) {
+export default function Question({ question, nextQuestion, handleResult }) {
 
   const inputRef = useRef(null);
   const [correct, setCorrect] = useState(null);
@@ -15,6 +15,7 @@ export default function Question({ question, nextQuestion }) {
         setCorrect(false);
       }
     }
+    handleResult(correct);
   };
 
 
@@ -23,7 +24,6 @@ export default function Question({ question, nextQuestion }) {
     <>
       <p>{!question ? "Loading question..." : question.country}</p>
       <button onClick={() => nextQuestion()}>Next Question</button>
-      <p>what is the capitcal?</p>
       <form onSubmit={handleSubmit}>
         <input
           type="text"

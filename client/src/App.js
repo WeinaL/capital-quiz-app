@@ -4,6 +4,7 @@ import "./App.css";
 
 function App() {
   const [question, setQuestion] = useState(null);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -20,12 +21,20 @@ function App() {
     const data = await res.json();
     setQuestion(data);
   }
+  const handleResult = (correct) => {
+    if (correct) {
+      setScore(score + 1);
+    }
+  }
 
   return (
     <div className="App">
       <header className="App-header">
         <main>
-          <Question question={question} nextQuestion= {handleNextQuestion}></Question>
+          <title>Captial Quiz</title>
+          <h1>Capital Quiz</h1>
+          <p>scores: {score}</p>
+          <Question question={question} nextQuestion= {handleNextQuestion} handleResult={handleResult}></Question>
         </main>
       </header>
     </div>
