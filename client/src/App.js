@@ -1,6 +1,6 @@
-import React, {useEffect, useState} from "react";
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import Question from "./components/question"; 
+import "./App.css";
 
 function App() {
   const [question, setQuestion] = useState(null);
@@ -9,19 +9,24 @@ function App() {
     const fetchData = async () => {
       const res = await fetch("/getQuestion");
       const data = await res.json();
-      console.log(data)
       setQuestion(data);
     };
     fetchData();
   }, []);
 
-
+  const handleNextQuestion = async () => {
+    console.log("hell0")
+    const res = await fetch("/getQuestion");
+    const data = await res.json();
+    setQuestion(data);
+  }
 
   return (
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>{!question ? "Loading question..." : question.country}</p>
+        <main>
+          <Question question={question} nextQuestion= {handleNextQuestion}></Question>
+        </main>
       </header>
     </div>
   );
