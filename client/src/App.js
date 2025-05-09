@@ -1,43 +1,42 @@
-import React, { useEffect, useState } from "react";
-import Question from "./components/question"; 
+import React, { useState } from "react";
 import "./App.css";
+import { QuestionProvider } from "./QuestionContext";
+import Question from "./components/question";
+import Answer from "./components/answer";
+import Score from "./components/score";
 
 function App() {
-  const [question, setQuestion] = useState(null);
-  const [score, setScore] = useState(0);
+  const [correct, setCorrect] = useState(0);
+  const [total, setTotal] = useState(0);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      const res = await fetch("/getQuestion");
-      const data = await res.json();
-      setQuestion(data);
-    };
-    fetchData();
-  }, []);
+  const handleScore = (isCorrect) => {
 
-  const handleNextQuestion = async () => {
-    console.log("hell0")
-    const res = await fetch("/getQuestion");
-    const data = await res.json();
-    setQuestion(data);
-  }
-  const handleResult = (correct) => {
-    if (correct) {
-      setScore(score + 1);
+    setTotal((total) => {
+      const newTotal = total + 1;
+
+      return newTotal;
     }
-  }
+    );
+
+    setCorrect((correct) =>{
+      const newCorrect = isCorrect ? correct + 1 : correct;
+  
+      return newCorrect;
+    });
+
+  };
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <QuestionProvider>
+      <div className="App">
+        <header>Welcome to Capital Quiz!</header>
         <main>
-          <title>Captial Quiz</title>
-          <h1>Capital Quiz</h1>
-          <p>scores: {score}</p>
-          <Question question={question} nextQuestion= {handleNextQuestion} handleResult={handleResult}></Question>
+          <Question />
+          <Answer handleScore={handleScore} />
+          <Score correct={correct} total={total}/>
         </main>
-      </header>
-    </div>
+      </div>
+    </QuestionProvider>
   );
 }
 

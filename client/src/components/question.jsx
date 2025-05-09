@@ -1,39 +1,18 @@
-import React, { useState, useRef } from "react";
+import React, { useContext } from "react";
+import { QuestionContext } from "../QuestionContext";
 
-export default function Question({ question, nextQuestion, handleResult }) {
+const Question = () => {
+  const { question, loading, error, fetchNewQuestion } = useContext(QuestionContext);
 
-  const inputRef = useRef(null);
-  const [correct, setCorrect] = useState(null);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    if (inputRef.current) {
-      const userInput = inputRef.current.value;
-      if (userInput === question.capital) {
-        setCorrect(true);
-      } else {
-        setCorrect(false);
-      }
-    }
-    handleResult(correct);
-  };
-
-
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error: {error.message}</p>;
 
   return (
-    <>
-      <p>{!question ? "Loading question..." : question.country}</p>
-      <button onClick={() => nextQuestion()}>Next Question</button>
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          placeholder="Enter your answer"
-          ref={inputRef}
-        />
-        <button type="submit">Submit</button>
-      </form>
-      {correct === true && <p>Correct!</p>}
-      {correct === false && <p>Incorrect!</p>}
-    </>
+    <div>
+      <h1>{question.country}</h1>
+      <button onClick={fetchNewQuestion}>Next Question</button>
+    </div>
   );
-}
+};
+
+export default Question;

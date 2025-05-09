@@ -1,16 +1,17 @@
 {
   "name": "server",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "index.cjs",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node index.js"
+    "start": "node index.cjs"
   },
   "author": "",
   "license": "ISC",
   "description": "",
   "dependencies": {
+    "csv-parser": "^3.2.0",
     "express": "^5.1.0",
     "pg": "^8.15.6"
   }
