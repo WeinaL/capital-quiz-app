@@ -6,7 +6,6 @@ const Answer = ({ handleScore }) => {
   const [userAnswer, setUserAnswer] = useState("");
   const [isCorrect, setIsCorrect] = useState(null);
 
-
   const handleSubmit = (e) => {
     e.preventDefault();
     const isCorrect =
@@ -14,7 +13,7 @@ const Answer = ({ handleScore }) => {
     setIsCorrect(isCorrect);
     handleScore(isCorrect);
   };
-  
+
   useEffect(() => {
     setIsCorrect(null);
     setUserAnswer("");

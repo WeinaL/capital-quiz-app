@@ -10,20 +10,17 @@ function App() {
   const [total, setTotal] = useState(0);
 
   const handleScore = (isCorrect) => {
-
     setTotal((total) => {
       const newTotal = total + 1;
 
       return newTotal;
-    }
-    );
-
-    setCorrect((correct) =>{
-      const newCorrect = isCorrect ? correct + 1 : correct;
-  
-      return newCorrect;
     });
 
+    setCorrect((correct) => {
+      const newCorrect = isCorrect ? correct + 1 : correct;
+
+      return newCorrect;
+    });
   };
 
   return (
@@ -33,7 +30,7 @@ function App() {
         <main>
           <Question />
           <Answer handleScore={handleScore} />
-          <Score correct={correct} total={total}/>
+          <Score correct={correct} total={total} />
         </main>
       </div>
     </QuestionProvider>

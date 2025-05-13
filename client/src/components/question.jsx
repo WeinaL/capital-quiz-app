@@ -2,7 +2,8 @@ import React, { useContext } from "react";
 import { QuestionContext } from "../QuestionContext";
 
 const Question = () => {
-  const { question, loading, error, fetchNewQuestion } = useContext(QuestionContext);
+  const { question, loading, error, fetchNewQuestion } =
+    useContext(QuestionContext);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error: {error.message}</p>;
