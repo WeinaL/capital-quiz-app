@@ -11,10 +11,24 @@ describe("GET /api", () => {
     const response = await request(app).get("/api");
     expect(response.text).toBe("Hello World!");
   });
+});
 
-    it("should have at least one question", async () => {
+describe("GET /getAllQuestions", () => {
+  it("should return a 200 status code", async () => {
+    const response = await request(app).get("/getAllQuestions");
+    expect(response.status).toBe(200);
+  });
+
+  it("should have at least one question", async () => {
     const response = await request(app).get("/getAllQuestions");
     expect(response.text.length).toBeGreaterThan(0);
+  });
+});
+
+describe("GET /getQuestion", () => {
+  it("should return a 200 status code", async () => {
+    const response = await request(app).get("/getQuestion");
+    expect(response.status).toBe(200);
   });
 
   it("question should contain country and capital", async () => {
