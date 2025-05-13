@@ -1,53 +1,67 @@
 # World Capital Quiz Server
 
-This is the server-side application for the World Capital Quiz project. It provides an API endpoint to fetch quiz questions about world capitals.
+This is the backend server for the World Capital Quiz application. It is built with Node.js, Express, and TypeScript, and serves quiz questions about world capitals.
 
 ## Features
-- Reads quiz data from a CSV file (`capitals.csv`).
-- Provides a REST API endpoint to fetch random quiz questions.
-- Built using Node.js and Express.
+- Serves random country/capital quiz questions from a JSON dataset
+- REST API endpoint for fetching quiz questions
+- Written in TypeScript and supports ES modules
+- Includes automated tests using Jest and Supertest
 
 ## Prerequisites
-- Node.js (v14 or later)
-- npm (Node Package Manager)
+- Node.js v18 or later (v20+ recommended for full ESM support)
+- npm
 
 ## Setup
-1. Clone the repository to your local machine.
-2. Navigate to the `server` directory:
-   ```bash
-   cd server
-   ```
-3. Install the required dependencies:
-   ```bash
+
+1. **Install dependencies:**
+   ```sh
    npm install
    ```
 
-## Running the Server
-1. Start the server:
-   ```bash
-   node index.cjs
+2. **Build the project:**
+   ```sh
+   npm run build
    ```
-2. The server will start on `http://localhost:3001` by default. You can change the port by setting the `PORT` environment variable.
+
+3. **Start the server:**
+   ```sh
+   npm start
+   ```
+   The server will start on the default port (see `src/index.ts`).
 
 ## API Endpoints
-### `GET /getQuestion`
-- Returns a random quiz question from the dataset.
-- Example response:
+
+- `GET /getQuestion` — Returns a random country/capital question as JSON.
+
+  Example response:
   ```json
   {
-    "country": "France",
-    "capital": "Paris"
+    "id": 1,
+    "country": "Afghanistan",
+    "capital": "Kabul"
   }
   ```
 
-## File Structure
-- `index.cjs`: Main server file.
-- `capitals.csv`: Dataset containing country-capital pairs.
-- `package.json`: Contains project metadata and dependencies.
+## Project Structure
+
+- `src/` — TypeScript source files
+- `data/capitals.json` — The quiz data (countries and capitals)
+- `build/` — Compiled JavaScript output
+- `tests/` — Automated test files
+
+## Testing
+
+Run all tests with:
+```sh
+npm test
+```
+
+Tests are written using Jest and Supertest, and are compatible with ESM.
 
 ## Notes
-- Ensure the `capitals.csv` file is present in the `server` directory.
-- The server currently reads data from the CSV file. Future versions may integrate a database for better scalability.
+- JSON imports use the `assert { type: "json" }` syntax in the source code.
+- If you encounter issues with imports or running tests, ensure your Node.js and Jest versions support ESM and JSON imports.
 
 ## License
-This project is licensed under the MIT License.
+MIT
