@@ -1,24 +1,22 @@
-import express from 'express';
-
-
+import express, {} from "express";
 import capitals from "../data/capitals.json";
 
 let quiz: any[] = [];
 
 try {
   quiz = capitals;
-  console.log('capitals.json file successfully loaded');
+  console.log("capitals.json file successfully loaded");
 } catch (err) {
-  console.error('Error loading capitals.json:', err);
+  console.error("Error loading capitals.json:", err);
 }
 
 const app = express();
 
+app.get("/api", (req, res) => {
+  res.send("Hello World!");
+});
 
-app.get('/api', (req, res) => {
-  res.send('Hello World!');   });
-
-app.get('/getQuestion', async (req, res) => {
+app.get("/getQuestion", async (req, res) => {
   let question = await nextQuestion();
   res.json(question);
 });
