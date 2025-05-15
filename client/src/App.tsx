@@ -1,26 +1,16 @@
 import React, { useState } from "react";
-import "./App.css";
 import { QuestionProvider } from "./QuestionContext";
 import Question from "./components/question";
 import Answer from "./components/answer";
 import Score from "./components/score";
 
-function App() {
-  const [correct, setCorrect] = useState(0);
-  const [total, setTotal] = useState(0);
+const App: React.FC = () => {
+  const [correct, setCorrect] = useState<number>(0);
+  const [total, setTotal] = useState<number>(0);
 
-  const handleScore = (isCorrect) => {
-    setTotal((total) => {
-      const newTotal = total + 1;
-
-      return newTotal;
-    });
-
-    setCorrect((correct) => {
-      const newCorrect = isCorrect ? correct + 1 : correct;
-
-      return newCorrect;
-    });
+  const handleScore = (isCorrect: boolean) => {
+    setTotal((total) => total + 1);
+    setCorrect((correct) => (isCorrect ? correct + 1 : correct));
   };
 
   return (
@@ -35,6 +25,6 @@ function App() {
       </div>
     </QuestionProvider>
   );
-}
+};
 
 export default App;

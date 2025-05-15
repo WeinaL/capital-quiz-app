@@ -1,15 +1,20 @@
 import React, { useContext, useState, useEffect } from "react";
 import { QuestionContext } from "../QuestionContext";
 
-const Answer = ({ handleScore }) => {
-  const { question } = useContext(QuestionContext);
-  const [userAnswer, setUserAnswer] = useState("");
-  const [isCorrect, setIsCorrect] = useState(null);
+interface AnswerProps {
+  handleScore: (isCorrect: boolean) => void;
+}
 
-  const handleSubmit = (e) => {
+const Answer: React.FC<AnswerProps> = ({ handleScore }) => {
+  const context = useContext(QuestionContext);
+  const question = context?.question;
+  const [userAnswer, setUserAnswer] = useState("");
+  const [isCorrect, setIsCorrect] = useState<boolean | null>(null);
+
+  const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    const isCorrect =
-      userAnswer.trim().toLowerCase() === question.capital.toLowerCase();
+    if (!question) return;
+    const isCorrect = userAnswer.trim().toLowerCase() === question.capital.toLowerCase();
     setIsCorrect(isCorrect);
     handleScore(isCorrect);
   };
@@ -42,7 +47,7 @@ const Answer = ({ handleScore }) => {
           ) : (
             <>
               <p style={{ color: "red" }}>Incorrect</p>
-              <p>{question.capital}</p>
+              <p>{question?.capital}</p>
             </>
           )}
         </div>
@@ -50,4 +55,5 @@ const Answer = ({ handleScore }) => {
     </>
   );
 };
+
 export default Answer;
