@@ -1,6 +1,6 @@
 # World Capital Quiz Application
 
-A modern full-stack TypeScript application featuring a React frontend with Tailwind CSS and a Node.js/Express backend, complete with comprehensive unit testing.
+A modern full-stack TypeScript application featuring a React frontend with Tailwind CSS and a Node.js/Express backend, complete with comprehensive unit testing 
 
 ## Features
 - **Frontend**: React with TypeScript, styled with Tailwind CSS for a responsive and modern UI
@@ -35,9 +35,9 @@ A modern full-stack TypeScript application featuring a React frontend with Tailw
    git init
    git add .
    git commit -m "Initial commit"
-   git branch -M main
+   git branch -M master
    git remote add origin <your-github-repo-url>
-   git push -u origin main
+   git push -u origin master
    ```
 
 ### Production Build
