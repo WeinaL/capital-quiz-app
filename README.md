@@ -1,6 +1,6 @@
 # World Capital Quiz Application
 
-A modern full-stack TypeScript application featuring a React frontend with Tailwind CSS and a Node.js/Express backend, complete with comprehensive unit testing 
+A modern full-stack TypeScript application featuring a React frontend with Tailwind CSS and a Node.js/Express backend, complete with comprehensive unit testing.
 
 ## Features
 - **Frontend**: React with TypeScript, styled with Tailwind CSS for a responsive and modern UI
