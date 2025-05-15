@@ -1,0 +1,17 @@
+{
+  "name": "world-capital-quiz",
+  "version": "1.0.0",
+  "description": "World Capital Quiz Application with React frontend and Node.js backend",
+  "scripts": {
+    "install-all": "npm install && cd client && npm install && cd ../server && npm install",
+    "client": "cd client && npm start",
+    "server": "cd server && npm run dev",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "build": "cd client && npm run build && cd ../server && npm run build",
+    "test": "cd client && npm test && cd ../server && npm test",
+    "start": "cd server && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^8.0.1"
+  }
+}

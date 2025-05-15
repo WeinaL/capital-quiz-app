@@ -26,15 +26,57 @@ A modern full-stack TypeScript application featuring a React frontend with Tailw
 - Jest and Supertest for API testing
 - PostgreSQL database integration
 
-## Setup
-### Clone the Repository
-1. Clone the repository to your local machine.
-   ```bash
-   git clone <repository-url>
+## Deployment
+### GitHub Setup
+1. Create a new repository on GitHub.
+
+2. Initialize and push to GitHub:
+   ```powershell
+   git init
+   git add .
+   git commit -m "Initial commit"
+   git branch -M main
+   git remote add origin <your-github-repo-url>
+   git push -u origin main
    ```
-2. Navigate to the project directory:
-   ```bash
-   cd World-Capital-Quiz-pgDB
+
+### Production Build
+1. Install all dependencies:
+   ```powershell
+   npm run install-all
+   ```
+
+2. Build the application:
+   ```powershell
+   npm run build
+   ```
+
+3. Run tests to ensure everything works:
+   ```powershell
+   npm test
+   ```
+
+### Environment Setup
+1. Create a `.env` file in the server directory:
+   ```env
+   PORT=3001
+   NODE_ENV=production
+   ```
+
+2. Create a `.env` file in the client directory:
+   ```env
+   REACT_APP_API_URL=http://localhost:3001
+   ```
+
+### Starting the Application
+1. For development (runs both client and server):
+   ```powershell
+   npm run dev
+   ```
+
+2. For production:
+   ```powershell
+   npm start
    ```
 
 ### Install Dependencies

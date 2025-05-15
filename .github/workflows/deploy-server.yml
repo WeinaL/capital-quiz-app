@@ -1,0 +1,44 @@
+name: Deploy Server
+
+on:
+  push:
+    branches: [ main ]
+    paths:
+      - 'server/**'
+      - '.github/workflows/deploy-server.yml'
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+      
+      - name: Use Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          
+      - name: Install Dependencies
+        working-directory: ./server
+        run: npm install
+        
+      - name: Run Tests
+        working-directory: ./server
+        run: npm test
+        
+      - name: Build
+        working-directory: ./server
+        run: npm run build
+        
+      - name: Set up GitHub Runner
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18.x'
+          
+      - name: Start Server
+        working-directory: ./server
+        run: |
+          echo "PORT=${{ secrets.PORT }}" >> .env
+          echo "NODE_ENV=production" >> .env
+          npm start

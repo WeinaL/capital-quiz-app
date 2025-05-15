@@ -1,14 +1,15 @@
   
 # World Capital Quiz – Client
 
-This is the React frontend for the **World Capital Quiz** project. It provides an interactive quiz experience about world capitals and communicates with the backend API.
+A modern React frontend built with TypeScript and Tailwind CSS for the World Capital Quiz project. Features comprehensive unit testing and a responsive, accessible design.
 
 ## Features
 
-- Engaging quiz on world capitals
-- Responsive UI built with React
-- Real-time score tracking and instant feedback
-- API integration for fetching questions and submitting answers
+- Built with React 18 and TypeScript for type-safe development
+- Stunning UI styled with Tailwind CSS
+- Comprehensive unit tests using Jest and React Testing Library
+- Real-time score tracking with React Context API
+- Type-safe API integration with backend services
 
 ## Prerequisites
 
