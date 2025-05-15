@@ -2,7 +2,7 @@ name: Deploy Server
 
 on:
   push:
-    branches: [ main ]
+    branches: [ master ]
     paths:
       - 'server/**'
       - '.github/workflows/deploy-server.yml'
@@ -22,10 +22,9 @@ jobs:
       - name: Install Dependencies
         working-directory: ./server
         run: npm install
-        
-      - name: Run Tests
+          - name: Run Tests
         working-directory: ./server
-        run: npm test
+        run: npm test -- --watchAll=false
         
       - name: Build
         working-directory: ./server
