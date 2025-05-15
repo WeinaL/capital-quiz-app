@@ -22,7 +22,7 @@ const App: React.FC = () => {
         <main className="max-w-sm sm:max-w-xl md:max-w-2xl mx-auto bg-white rounded-xl shadow-lg p-4 sm:p-6 md:p-8">
           <Question />
           <Answer handleScore={handleScore} />
-          {total > 0 && <Score correct={correct} total={total} />} 
+          {total > 0 && <Score correct={correct} total={total} />}
         </main>
       </div>
     </QuestionProvider>

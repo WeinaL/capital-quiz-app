@@ -27,13 +27,17 @@ app.get("/getQuestion", async (req, res) => {
 
 const PORT = process.env.PORT || 3001;
 
-app.listen(PORT, () => {
-  console.log(`Server listening on ${PORT}`);
-});
+let server: any;
+
+if (process.env.NODE_ENV !== 'test') {
+  server = app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
+}
 
 async function nextQuestion(): Promise<any> {
   const randomCountry = quiz[Math.floor(Math.random() * quiz.length)];
   return randomCountry;
 }
 
-export default app;
+export { app, server };

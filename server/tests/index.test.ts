@@ -1,5 +1,16 @@
 import request from "supertest";
-import app from "../src/index";
+import { app } from "../src/index";
+import { Server } from "http";
+
+let server: Server;
+
+beforeAll(() => {
+  server = app.listen(3001);
+});
+
+afterAll((done) => {
+  server.close(done);
+});
 
 describe("GET /api", () => {
   it("should return a 200 status code", async () => {

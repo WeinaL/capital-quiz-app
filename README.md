@@ -1,15 +1,30 @@
 # World Capital Quiz Application
 
-This is a full-stack application for the World Capital Quiz. It consists of a client-side React application and a server-side Node.js application.
+A modern full-stack TypeScript application featuring a React frontend with Tailwind CSS and a Node.js/Express backend, complete with comprehensive unit testing.
 
 ## Features
-- **Client**: A React-based user interface for taking the quiz.
-- **Server**: A Node.js server that provides quiz questions via a REST API.
-- **Data**: Quiz questions are sourced from a CSV file containing country-capital pairs.
+- **Frontend**: React with TypeScript, styled with Tailwind CSS for a responsive and modern UI
+- **Backend**: Node.js/Express server with TypeScript for type-safe API endpoints
+- **Testing**: Comprehensive unit testing using Jest and React Testing Library
+- **Data**: Type-safe handling of quiz questions using TypeScript interfaces
 
 ## Prerequisites
-- Node.js (v14 or later)
+- Node.js (v16 or later)
 - npm (Node Package Manager)
+- TypeScript 5.0+
+- Jest for testing
+
+## Technical Stack
+### Frontend
+- React 18 with TypeScript
+- Tailwind CSS for styling
+- Jest and React Testing Library for unit testing
+- Context API for state management
+
+### Backend
+- Node.js/Express with TypeScript
+- Jest and Supertest for API testing
+- PostgreSQL database integration
 
 ## Setup
 ### Clone the Repository
@@ -51,7 +66,7 @@ This is a full-stack application for the World Capital Quiz. It consists of a cl
    ```
 2. Start the server:
    ```bash
-   node index.cjs
+   npm dev
    ```
 3. The server will start on `http://localhost:3001` by default.
 
@@ -75,7 +90,7 @@ This is a full-stack application for the World Capital Quiz. It consists of a cl
 
 ### Server
 - `index.cjs`: Main server file.
-- `capitals.csv`: Dataset containing country-capital pairs.
+- `capitals.json`: Dataset containing country-capital pairs.
 - `package.json`: Contains project metadata and dependencies.
 
 ## API Endpoints
@@ -90,7 +105,7 @@ This is a full-stack application for the World Capital Quiz. It consists of a cl
   ```
 
 ## Notes
-- Ensure the `capitals.csv` file is present in the `server` directory.
+- Ensure the `capitals.json` file is present in the `server` directory.
 - The server currently reads data from the CSV file. Future versions may integrate a database for better scalability.
 
 ## License

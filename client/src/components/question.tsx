@@ -7,7 +7,7 @@ const Question: React.FC = () => {
   const { question, loading, error, fetchNewQuestion } = context;
 
   if (loading) return <p className="text-gray-500 animate-pulse">Loading...</p>;
-  if (error) return <p className="text-error">Error: {error.message}</p>;
+  if (error) return <p className="text-error">Getting question failed!</p>;
 
   return (
     <div className="mb-6 sm:mb-8">
@@ -16,6 +16,7 @@ const Question: React.FC = () => {
       </h1>
       <button
         onClick={fetchNewQuestion}
+        data-testid="next-question-button"
         className="w-full sm:w-auto px-4 sm:px-6 py-2.5 bg-primary hover:bg-secondary text-white font-semibold rounded-lg transition-colors"
       >
         Next Question
