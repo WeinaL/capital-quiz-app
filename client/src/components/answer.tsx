@@ -25,34 +25,39 @@ const Answer: React.FC<AnswerProps> = ({ handleScore }) => {
   }, [question]);
 
   return (
-    <>
-      <form onSubmit={handleSubmit}>
+    <div className="mb-6 sm:mb-8">
+      <form onSubmit={handleSubmit} className="flex flex-col gap-3 sm:gap-4">
         <input
           type="text"
           value={userAnswer}
           onChange={(e) => setUserAnswer(e.target.value)}
           placeholder="Enter capital"
+          className="w-full px-3 sm:px-4 py-2.5 sm:py-3 text-base sm:text-lg border-2 border-slate-200 rounded-lg focus:border-primary focus:outline-none transition-colors"
           autoFocus
           required
           disabled={isCorrect !== null}
         />
-        <button type="submit" disabled={isCorrect !== null}>
+        <button
+          type="submit"
+          disabled={isCorrect !== null}
+          className="w-full sm:w-auto px-4 sm:px-6 py-2.5 sm:py-3 bg-primary hover:bg-secondary disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors"
+        >
           Submit
         </button>
       </form>
       {isCorrect !== null && (
-        <div>
+        <div className="mt-4">
           {isCorrect ? (
-            <p style={{ color: "green" }}>Correct!</p>
+            <p className="text-success font-semibold text-lg">Correct!</p>
           ) : (
-            <>
-              <p style={{ color: "red" }}>Incorrect</p>
-              <p>{question?.capital}</p>
-            </>
+            <div>
+              <p className="text-error font-semibold text-lg">Incorrect</p>
+              <p className="mt-2 text-text">The capital is: {question?.capital}</p>
+            </div>
           )}
         </div>
       )}
-    </>
+    </div>
   );
 };
 
