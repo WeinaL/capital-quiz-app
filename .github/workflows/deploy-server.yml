@@ -22,7 +22,7 @@ jobs:
       - name: Install Dependencies
         working-directory: ./server
         run: npm install
-          - name: Run Tests
+      - name: Run Tests
         working-directory: ./server
         run: npm test -- --watchAll=false
         
