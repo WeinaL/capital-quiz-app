@@ -19,6 +19,8 @@ interface QuestionProviderProps {
   children: ReactNode;
 }
 
+const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+
 export const QuestionProvider: React.FC<QuestionProviderProps> = ({ children }) => {
   const [question, setQuestion] = useState<Question | null>(null);
   const [loading, setLoading] = useState(true);
@@ -26,11 +28,16 @@ export const QuestionProvider: React.FC<QuestionProviderProps> = ({ children }) 
 
   const fetchQuestion = async () => {
     try {
-      const response = await fetch("/getQuestion");
+
+      console.log('Fetching question from API ' + API_URL);
+      const response = await fetch(`${API_URL}/getQuestion`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch question');
+      }
       const data = await response.json();
       setQuestion(data);
-    } catch (e) {
-      setError(e as Error);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Getting question failed!'));
     } finally {
       setLoading(false);
     }
@@ -40,10 +47,21 @@ export const QuestionProvider: React.FC<QuestionProviderProps> = ({ children }) 
     fetchQuestion();
   }, []);
 
-  const fetchNewQuestion = () => {
+  const fetchNewQuestion = async () => {
     setLoading(true);
     setError(null);
-    fetchQuestion();
+    try {
+      const response = await fetch(`${API_URL}/getQuestion`);
+      if (!response.ok) {
+        throw new Error('Failed to fetch question');
+      }
+      const data = await response.json();
+      setQuestion(data);
+    } catch (err) {
+      setError(err instanceof Error ? err : new Error('Getting question failed!'));
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (

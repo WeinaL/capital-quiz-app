@@ -1,4 +1,5 @@
 import express from "express";
+import cors from "cors";
 import capitals from "../data/capitals.json";
 
 let quiz: any[] = [];
@@ -11,6 +12,9 @@ try {
 }
 
 const app = express();
+
+// Enable CORS for all origins during development
+app.use(cors());
 
 app.get("/api", (req, res) => {
   res.send("Hello World!");
