@@ -1,13 +1,18 @@
 {
-  "buildCommand": "npm run build",
-  "outputDirectory": "build",
   "rewrites": [
     {
       "source": "/(.*)",
       "destination": "/index.html"
     }
   ],
+  "builds": [
+    {
+      "src": "package.json",
+      "use": "@vercel/static-build",
+      "config": { "distDir": "build" }
+    }
+  ],
   "env": {
-    "REACT_APP_API_URL": "your-vercel-server-url"
+    "REACT_APP_API_URL": "https://server-ktymhozjj-weina-lius-projects.vercel.app/"
   }
 }
