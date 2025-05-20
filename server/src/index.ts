@@ -16,7 +16,7 @@ const app = express();
 // Enable CORS with specific configuration
 app.use(cors({
   origin: [
-    'https://world-capital-quiz.onrender.com',
+    'https://capital-quiz-client.vercel.app',
     'http://localhost:3000'
   ],
   methods: ['GET'],
