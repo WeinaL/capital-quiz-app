@@ -1,4 +1,4 @@
-import express, { Request, Response, NextFunction } from "express";
+import express, { Request, Response } from "express";
 import cors from "cors";
 import capitals from "../data/capitals.json";
 
@@ -24,19 +24,19 @@ app.use(cors({
 }));
 
 // Health check endpoint for Render
-app.get("/health", (req, res) => {
+app.get("/health", (req: Request, res: Response) => {
   res.status(200).send("OK");
 });
 
-app.get("/api", (req, res) => {
+app.get("/api", (req: Request, res: Response) => {
   res.send("Hello World!");
 });
 
-app.get("/getAllQuestions", (req, res) => {
+app.get("/getAllQuestions", (req: Request, res: Response) => {
   res.json(quiz);
 });
 
-app.get("/getQuestion", async (req, res) => {
+app.get("/getQuestion", async (req: Request, res: Response) => {
   let question = await nextQuestion();
   res.json(question);
 });
