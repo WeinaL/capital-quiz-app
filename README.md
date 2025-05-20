@@ -1,10 +1,14 @@
 # World Capital Quiz Application
 
-A modern full-stack TypeScript application featuring a React frontend with Tailwind CSS and a Node.js/Express backend, complete with comprehensive unit testing
+A modern full-stack TypeScript application featuring a React frontend with Tailwind CSS and a Node.js/Express backend, complete with comprehensive unit testing.
+
+## Live Demo
+- Frontend: [https://capital-quiz-client.vercel.app](https://capital-quiz-client.vercel.app)
+- Backend: [https://capital-quiz-app.onrender.com](https://capital-quiz-app.onrender.com)
 
 ## Features
-- **Frontend**: React with TypeScript, styled with Tailwind CSS for a responsive and modern UI
-- **Backend**: Node.js/Express server with TypeScript for type-safe API endpoints
+- **Frontend**: React with TypeScript, styled with Tailwind CSS for a responsive and modern UI (deployed on Vercel)
+- **Backend**: Node.js/Express server with TypeScript for type-safe API endpoints (deployed on Render)
 - **Testing**: Comprehensive unit testing using Jest and React Testing Library
 - **Data**: Type-safe handling of quiz questions using TypeScript interfaces
 
