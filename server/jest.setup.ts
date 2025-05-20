@@ -1,7 +1,11 @@
 import { Response, Request } from 'express';
+import { beforeAll, afterAll, beforeEach, jest } from '@jest/globals';
 
 declare global {
+  // Augment NodeJS.Global
+  // eslint-disable-next-line no-var
   var mockRequest: (body?: any, query?: any, params?: any) => Partial<Request>;
+  // eslint-disable-next-line no-var
   var mockResponse: () => Partial<Response>;
 }
 

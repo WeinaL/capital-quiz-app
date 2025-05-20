@@ -1,11 +1,12 @@
 import request from "supertest";
-import { app } from "../src/index";
+import app from "../src/index"; // Adjust the path to your app file
 import { Server } from "http";
+import { beforeAll, afterAll, describe, it, expect } from '@jest/globals';
 
 let server: Server;
 
 beforeAll(() => {
-  server = app.listen(3001);
+  server = app.listen(3002);
 });
 
 afterAll((done) => {
