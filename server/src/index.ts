@@ -23,8 +23,8 @@ app.use(cors({
   //    'http://localhost:3000'
   // ],
   methods: ['GET', 'OPTIONS'],
-  allowedHeaders: ['Content-Type', 'Accept'],
-  credentials: true
+  // allowedHeaders: ['Content-Type', 'Accept'],
+  // credentials: true
 }));
 
 // Health check endpoint for Render
