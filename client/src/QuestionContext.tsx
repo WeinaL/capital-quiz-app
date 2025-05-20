@@ -19,7 +19,8 @@ interface QuestionProviderProps {
   children: ReactNode;
 }
 
-const API_URL = process.env.REACT_APP_API_URL || 'http://localhost:3001';
+const API_URL = process.env.REACT_APP_API_URL ?? 'http://localhost:3001';
+console.log('Current API_URL:', process.env.REACT_APP_API_URL);
 
 export const QuestionProvider: React.FC<QuestionProviderProps> = ({ children }) => {
   const [question, setQuestion] = useState<Question | null>(null);
