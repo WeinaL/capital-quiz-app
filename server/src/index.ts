@@ -14,18 +14,11 @@ try {
 const app = express();
 
 // Enable CORS for all origins
-app.use(cors());
-
-app.use((req: Request, res: Response, next: NextFunction): void => {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
-  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
-  if (req.method === "OPTIONS") {
-    res.sendStatus(204);
-    return;
-  }
-  next();
-});
+app.use(cors({
+  origin: 'https://capital-quiz-client-cza32c3mw-weina-lius-projects.vercel.app',
+  methods: ['GET', 'POST', 'OPTIONS'],
+  credentials: true
+}));
 
 app.get("/api", (req, res) => {
   res.send("Hello World!");
