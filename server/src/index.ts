@@ -13,8 +13,15 @@ try {
 
 const app = express();
 
-// Enable CORS for all origins during development
-app.use(cors());
+// Enable CORS with specific options
+app.use(cors({
+  origin: [
+    'https://world-capital-quiz-pg-db.vercel.app',
+    'http://localhost:3000'
+  ],
+  methods: ['GET'],
+  credentials: true
+}));
 
 app.get("/api", (req, res) => {
   res.send("Hello World!");
@@ -29,19 +36,18 @@ app.get("/getQuestion", async (req, res) => {
   res.json(question);
 });
 
-const PORT = process.env.PORT || 3001;
-
-let server: any;
-
-if (process.env.NODE_ENV !== 'test') {
-  server = app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-  });
-}
-
 async function nextQuestion(): Promise<any> {
   const randomCountry = quiz[Math.floor(Math.random() * quiz.length)];
   return randomCountry;
 }
 
-export { app, server };
+// For local development
+if (process.env.NODE_ENV !== 'production') {
+  const PORT = process.env.PORT || 3001;
+  app.listen(PORT, () => {
+    console.log(`Server listening on ${PORT}`);
+  });
+}
+
+// Export for Vercel
+export default app;
