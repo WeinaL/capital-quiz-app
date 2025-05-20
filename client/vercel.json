@@ -11,6 +11,6 @@
       "use": "@vercel/static-build",
       "config": { "distDir": "build" }
     }  ],  "env": {
-    "REACT_APP_API_URL": "https://capital-quiz-app.onrender.com/"
+    "REACT_APP_API_URL": "https://capital-quiz-app.onrender.com"
   }
 }
