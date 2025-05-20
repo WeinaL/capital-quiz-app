@@ -26,17 +26,20 @@ export const QuestionProvider: React.FC<QuestionProviderProps> = ({ children }) 
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<Error | null>(null);
 
-  const fetchQuestion = async () => {
-    try {
-
+  const fetchQuestion = async () => {    try {
       console.log('Fetching question from API ' + API_URL);
       const response = await fetch(`${API_URL}/getQuestion`);
+      console.log('Response status:', response.status);
       if (!response.ok) {
-        throw new Error('Failed to fetch question');
+        const errorText = await response.text();
+        console.error('Response error:', errorText);
+        throw new Error(`Failed to fetch question: ${response.status} ${errorText}`);
       }
       const data = await response.json();
+      console.log('Received data:', data);
       setQuestion(data);
     } catch (err) {
+      console.error('Fetch error:', err);
       setError(err instanceof Error ? err : new Error('Getting question failed!'));
     } finally {
       setLoading(false);
