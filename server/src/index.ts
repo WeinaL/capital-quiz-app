@@ -1,4 +1,4 @@
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import cors from "cors";
 import capitals from "../data/capitals.json";
 
@@ -16,8 +16,14 @@ const app = express();
 // Enable CORS for all origins
 app.use(cors());
 
-app.use((req, res, next) => {
+app.use((req: Request, res: Response, next: NextFunction): void => {
   res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Methods", "GET,POST,PUT,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  if (req.method === "OPTIONS") {
+    res.sendStatus(204);
+    return;
+  }
   next();
 });
 
