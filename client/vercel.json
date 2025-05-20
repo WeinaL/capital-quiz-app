@@ -11,6 +11,6 @@
       "use": "@vercel/static-build",
       "config": { "distDir": "build" }
     }  ],  "env": {
-    "REACT_APP_API_URL": "https://server-iymadtq1g-weina-lius-projects.vercel.app"
+    "REACT_APP_API_URL": "https://server-j4ymyau53-weina-lius-projects.vercel.app/"
   }
 }
