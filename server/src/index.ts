@@ -13,12 +13,20 @@ try {
 
 const app = express();
 
-// Enable CORS for all origins
+// Enable CORS with specific configuration
 app.use(cors({
-  origin: 'https://capital-quiz-client-cza32c3mw-weina-lius-projects.vercel.app',
-  methods: ['GET', 'POST', 'OPTIONS'],
+  origin: [
+    'https://world-capital-quiz.onrender.com',
+    'http://localhost:3000'
+  ],
+  methods: ['GET'],
   credentials: true
 }));
+
+// Health check endpoint for Render
+app.get("/health", (req, res) => {
+  res.status(200).send("OK");
+});
 
 app.get("/api", (req, res) => {
   res.send("Hello World!");
@@ -38,13 +46,9 @@ async function nextQuestion(): Promise<any> {
   return randomCountry;
 }
 
-// For local development
-if (process.env.NODE_ENV !== 'production') {
-  const PORT = process.env.PORT || 3001;
-  app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
-  });
-}
+const PORT = process.env.PORT || 3001;
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
+});
 
-// Export for Vercel
 export default app;
