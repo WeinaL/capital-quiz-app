@@ -13,7 +13,7 @@ try {
 
 const app = express();
 
-// Enable CORS for all origins during development and testing
+// Enable CORS for all origins
 app.use(cors());
 
 app.get("/api", (req, res) => {
