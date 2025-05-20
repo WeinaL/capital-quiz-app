@@ -38,7 +38,7 @@ export const QuestionProvider: React.FC<QuestionProviderProps> = ({ children }) 
       console.log('Response status:', response.status);
       if (!response.ok) {
         const errorText = await response.text();
-        console.error('Error response:', errorText);
+        console.error('Error response: ', errorText);
         throw new Error(`Failed to fetch question: ${response.status} ${errorText}`);
       }
       const data = await response.json();

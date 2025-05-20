@@ -13,8 +13,20 @@ try {
 
 const app = express();
 
-// Enable CORS for all origins
-app.use(cors());
+// Enable CORS with specific configuration
+app.use(cors({
+  origin: [
+    'https://capital-quiz-client-4tpd7zuf0-weina-lius-projects.vercel.app',
+    'https://capital-quiz-client.vercel.app',
+    'http://localhost:3000'
+  ],
+  methods: ['GET', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Accept'],
+  credentials: true
+}));
+
+// Handle preflight requests
+app.options('*', cors());
 
 app.get("/api", (req, res) => {
   res.send("Hello World!");
