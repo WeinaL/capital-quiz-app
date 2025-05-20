@@ -13,15 +13,8 @@ try {
 
 const app = express();
 
-// Enable CORS with specific options
-app.use(cors({
-  origin: [
-    'https://world-capital-quiz-pg-db.vercel.app',
-    'http://localhost:3000'
-  ],
-  methods: ['GET'],
-  credentials: true
-}));
+// Enable CORS for all origins during development and testing
+app.use(cors());
 
 app.get("/api", (req, res) => {
   res.send("Hello World!");
