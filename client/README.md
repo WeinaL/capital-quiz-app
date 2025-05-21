@@ -49,3 +49,4 @@ This application is deployed on Vercel. To deploy your own instance:
 - `public/` – Static assets
 
 For backend setup and API details, refer to the main project README.
+
