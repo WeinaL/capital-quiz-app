@@ -9,5 +9,8 @@
   "outputDirectory": "build",
   "env": {
     "REACT_APP_API_URL": "https://capital-quiz-app.onrender.com"
+  },
+  "git": {
+    "deploymentEnabled": false
   }
 }
