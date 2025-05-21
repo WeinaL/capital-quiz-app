@@ -1,5 +1,5 @@
 
-name: Build and Test React Application
+name: Build and Test React Application.
 
 # This workflow builds and tests the React app in the 'client' directory
 # Controls when the action will run. 
