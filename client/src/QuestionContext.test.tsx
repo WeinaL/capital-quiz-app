@@ -29,7 +29,7 @@ describe("QuestionContext", () => {
       fetchNewQuestion: expect.any(Function),
     });
   });
-  
+
   it("calls fetch on mount", async () => {
     await act(async () => {
       renderHook(() => useContext(QuestionContext), {
@@ -40,7 +40,16 @@ describe("QuestionContext", () => {
     });
 
     expect(global.fetch).toHaveBeenCalledTimes(1);
-    expect(global.fetch).toHaveBeenCalledWith("/getQuestion");
+
+    const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
+    expect(global.fetch).toHaveBeenCalledWith(`${API_URL}/getQuestion`, {
+      mode: "cors",
+      headers: {
+        Accept: "application/json",
+        "Content-Type": "application/json",
+        "Access-Control-Allow-Origin": "*",
+      },
+    });
   });
 
   it("updates state correctly after fetch", async () => {
