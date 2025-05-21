@@ -135,4 +135,4 @@ No environment variables required for basic setup. The server runs on PORT 3001 
 This project is licensed under the MIT License.
 
 ## Credits
-- Country and capital data inspiried by Web Development course @Undemy
+- Country and capital data is owned by Web Development course @Undemy
