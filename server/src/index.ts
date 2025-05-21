@@ -14,18 +14,14 @@ try {
 const app = express();
 
 // Enable CORS with specific configuration
-app.use(cors({
-    origin: 'https://capital-quiz-client.vercel.app',
-
-  
-  // origin: [
-  //   'https://capital-quiz-client-l51j8lwrh-weina-lius-projects.vercel.app',
-  //    'http://localhost:3000'
-  // ],
-  methods: ['GET', 'OPTIONS'],
-  // allowedHeaders: ['Content-Type', 'Accept'],
-  // credentials: true
-}));
+app.use(
+  cors({
+    origin: ["https://capital-quiz-client.vercel.app", "http://localhost:3000"],
+    methods: ["GET", "OPTIONS"],
+    // allowedHeaders: ['Content-Type', 'Accept'],
+    // credentials: true
+  })
+);
 
 // Health check endpoint for Render
 app.get("/health", (req: Request, res: Response) => {

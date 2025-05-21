@@ -32,5 +32,17 @@
     "eslint-plugin-react-hooks": "^4.6.0",
     "postcss": "^8.4.31",
     "tailwindcss": "^3.3.5"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
