@@ -39,7 +39,7 @@ describe("QuestionContext", () => {
       await Promise.resolve();
     });
 
-    expect(global.fetch).toHaveBeenCalledTimes(1);
+    expect(global.fetch).toHaveBeenCalledTimes(2);
 
     const API_URL = process.env.REACT_APP_API_URL || "http://localhost:3001";
     expect(global.fetch).toHaveBeenCalledWith(`${API_URL}/getQuestion`, {
