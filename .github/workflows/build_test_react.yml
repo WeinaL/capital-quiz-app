@@ -36,7 +36,5 @@ jobs:
       - name: Deploy to Vercel
         run: |
           cd client
-          npx vercel --prod --yes --token="pLe1lR1pKMZXjCZcygVnPGAR"
-        env:
-          VERCEL_ORG_ID: "team_Y8kBrgEzWEUHGMwYmgqnDIlX"
-          VERCEL_PROJECT_ID: "prj_nFxkNHBrYF9lpprQxKbk886u5uL0"
+          npx vercel --prod --yeS
+
